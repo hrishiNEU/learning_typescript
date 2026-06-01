@@ -1,22 +1,22 @@
-//The types of the Arrays are decided at the time of declaration. we can't change it later
+//Arrays can have multiple types but they have to be explicitly defined.
 
-let names = ['ben','peter','mary']
+let mixed_array:(number|string)[] = []
 
-names.push('josh')
-//names.push(3) -- Not allowed
+mixed_array.push(20)
+mixed_array.push('Sam')
+//mixed_array.push(true) -- Error
 
-let numbers = [3,5,1,6,8,7]
+//Same can be done to objects as well
 
-numbers.push(12)
-//numbers.push('sam') -- gives error
+let ninjaOne: object;
+ninjaOne = {name:'chan', age:30}
 
-//For objects the same rule applies
-
-let actor = {
-    name: 'Ranbir',
-    movie: 'Animal',
-    age: 30
+let ninjaTwo: {
+    name: string,
+    age: number,
+    beltColor: string
 }
 
-// ninja.age = 'Forty' -- not allowed
-// Also, extra properties can't be added 
+ninjaTwo = {name:'shin', age:45, beltColor:'green'}
+
+// /ninjaTwo = {name:'shin', age:45, beltColor:'green' , skill:[sdfsf,sdfsf]} -- Not allowed.
