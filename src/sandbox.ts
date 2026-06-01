@@ -1,28 +1,30 @@
-//Function signatures
+// TS file does not access to index.html file. So it doesn't know if anchor is used or not.
+// Hence, it will give a warning saying there is a possibility of null
+// To fix this we can add ! at the end or add an if check
 
-let calc : (a:number, b:number, c:string|number) => void;
+const anchor = document.querySelector('a')!
 
-calc = (numberOne:number, numberTwo:number, action:string|number) => {
-    if (action === "add"){
-        return numberOne + numberTwo
-    }
-    else {
-        return numberOne - numberTwo
-    }
-}
+// if (anchor.href){
+//     console.log(anchor.href);
+// }
 
-const result = calc(5,10,'add')
+console.log(anchor.href)
 
-console.log(result)
+// But what if there are many anchor elements? We can use typecasting in that case.
 
-let ninja_action : (obj: {name:string, action:string}) => void;
+const form = document.querySelector('.new-item-form') as HTMLFormElement;
 
-type human = {name:string, action:string}
+const type = document.querySelector('#type') as HTMLSelectElement;
+const tofrom = document.querySelector('#tofrom') as HTMLInputElement;
+const details = document.querySelector('#details') as HTMLInputElement;
+const amount = document.querySelector('#amount') as HTMLInputElement;
 
-ninja_action = (ninja : human) => {
-    console.log(`${ninja.name} ${ninja.action}'s you`)
-}
-
-let ninjaOne = {name:'john', action:'train'}
-
-const some = ninja_action(ninjaOne)
+form.addEventListener('submit', (e:Event) => {
+    e.preventDefault();
+    console.log(
+        type.value,
+        tofrom.value,
+        details.value,
+        amount.valueAsNumber
+    );
+})
