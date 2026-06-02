@@ -1,16 +1,17 @@
-// TS file does not access to index.html file. So it doesn't know if anchor is used or not.
-// Hence, it will give a warning saying there is a possibility of null
-// To fix this we can add ! at the end or add an if check
+// Classes 
+import { Invoice } from './classes/invoice'
 
-const anchor = document.querySelector('a')!
+let invOne = new Invoice('Chun','Web development',50);
+let invTwo = new Invoice('Shin','System design',70);
 
-// if (anchor.href){
-//     console.log(anchor.href);
-// }
+let invoices : Invoice[] = []
 
-console.log(anchor.href)
+invoices.push(invOne);
+invoices.push(invTwo);
 
-// But what if there are many anchor elements? We can use typecasting in that case.
+invoices.forEach(inv => {
+    console.log(inv.client,inv.amount, inv.format()) 
+})
 
 const form = document.querySelector('.new-item-form') as HTMLFormElement;
 
